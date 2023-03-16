@@ -1,0 +1,62 @@
+package sec03.ex01;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+// localhost:8070/Chapter06/login2.html
+
+/**
+ * Servlet implementation class LoginServlet2
+ */
+@WebServlet("/Login3") //html문서의 액션과 웹서플릿 매핑 주소가 같아야함
+public class LoginServlet3 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub
+		System.out.println("init 메서드 호출");
+	}
+
+	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
+		System.out.println("destory 메서드 호출");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
+		PrintWriter out = response.getWriter();
+		
+		String user_id = request.getParameter("user_id");
+		String user_pw = request.getParameter("user_pw");
+		
+		String data = "<html>";
+		data += "<body>";
+		data += "아이디 : " + user_id;
+		data += "<br>";
+		data += "비밀번호 : " + user_pw;
+		data += "</body>";
+		data += "</html>";
+		
+		out.print(data);
+	}
+
+}
